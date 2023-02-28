@@ -10,13 +10,6 @@ namespace MonthCellCustomization
         {
             base.OnAttachedTo(bindable);
             this.calendar = bindable;
-            CalendarTextStyle textStyle = new CalendarTextStyle()
-            {
-                TextColor = Colors.White,
-                FontSize = 15,
-                FontAttributes = FontAttributes.Bold
-            };
-            
             this.calendar.MonthView.SpecialDates = new List<DateTime>
             {
                 DateTime.Now.AddDays(2),
@@ -28,7 +21,13 @@ namespace MonthCellCustomization
             };
 
             this.calendar.MonthView.SpecialDatesBackground = Color.FromArgb("#FF7D7D");
-            this.calendar.MonthView.SpecialDatesTextStyle = textStyle;
+            this.calendar.MonthView.SpecialDatesTextStyle = new CalendarTextStyle()
+            {
+                TextColor = Colors.White,
+                FontSize = 15,
+                FontAttributes = FontAttributes.Bold
+            };
+
             this.calendar.SelectableDayPredicate = (date) =>
             {
                 if (date.DayOfWeek == DayOfWeek.Sunday || date.DayOfWeek == DayOfWeek.Saturday)
@@ -49,7 +48,12 @@ namespace MonthCellCustomization
 
             this.calendar.ShowTrailingAndLeadingDates = false;
             this.calendar.MonthView.TrailingLeadingDatesBackground = Color.FromArgb("#AEAEFF");
-            this.calendar.MonthView.TrailingLeadingDatesTextStyle = textStyle;
+            this.calendar.MonthView.TrailingLeadingDatesTextStyle = new CalendarTextStyle()
+            {
+                TextColor = Colors.White,
+                FontSize = 15,
+                FontAttributes = FontAttributes.Bold
+            };
         }
 
         protected override void OnDetachingFrom(SfCalendar bindable)
