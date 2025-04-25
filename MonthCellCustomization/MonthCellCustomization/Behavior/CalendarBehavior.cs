@@ -10,14 +10,45 @@ namespace MonthCellCustomization
         {
             base.OnAttachedTo(bindable);
             this.calendar = bindable;
-            this.calendar.MonthView.SpecialDates = new List<DateTime>
+            this.calendar.MonthView.SpecialDayPredicate = (date) =>
             {
-                DateTime.Now.AddDays(2),
-                DateTime.Now.AddDays(4),
-                DateTime.Now.AddDays(6),
-                DateTime.Now.AddDays(-3),
-                DateTime.Now.AddDays(-5),
-                DateTime.Now.AddDays(-7),
+                if (date.Date == DateTime.Now.AddDays(2).Date)
+                {
+                    CalendarIconDetails iconDetails = new CalendarIconDetails();
+                    iconDetails.Icon = CalendarIcon.Dot;
+                    iconDetails.Fill = Colors.Red;
+                    return iconDetails;
+                }
+                else if (date.Date == DateTime.Now.AddDays(4).Date)
+                {
+                    CalendarIconDetails iconDetails = new CalendarIconDetails();
+                    iconDetails.Icon = CalendarIcon.Triangle;
+                    iconDetails.Fill = Colors.Blue;
+                    return iconDetails;
+                }
+                else if (date.Date == DateTime.Now.AddDays(-3).Date)
+                {
+                    CalendarIconDetails iconDetails = new CalendarIconDetails();
+                    iconDetails.Icon = CalendarIcon.Square;
+                    iconDetails.Fill = Colors.Green;
+                    return iconDetails;
+                }
+                else if (date.Date == DateTime.Now.AddDays(-5).Date)
+                {
+                    CalendarIconDetails iconDetails = new CalendarIconDetails();
+                    iconDetails.Icon = CalendarIcon.Heart;
+                    iconDetails.Fill = Colors.Red;
+                    return iconDetails;
+                }
+                else if (date.Date == DateTime.Now.AddDays(-7).Date)
+                {
+                    CalendarIconDetails iconDetails = new CalendarIconDetails();
+                    iconDetails.Icon = CalendarIcon.Diamond;
+                    iconDetails.Fill = Colors.Blue;
+                    return iconDetails;
+                }
+
+                return null;
             };
 
             this.calendar.MonthView.SpecialDatesBackground = Color.FromArgb("#FF7D7D");
